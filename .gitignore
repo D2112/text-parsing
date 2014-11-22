@@ -1,0 +1,4 @@
+*.class
+*.iml
+.idea
+src/main/java/com/epam/parsing/Test.java
