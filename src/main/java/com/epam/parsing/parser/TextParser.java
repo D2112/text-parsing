@@ -21,8 +21,8 @@ public class TextParser {
         regexBundles = ResourceBundle.getBundle(RegexNames.REGEX_FILE_BASE_NAME, currentLocale);
     }
 
-    public List<TextElement> parse(String text, TextType parsingType) {
-        Matcher m = getMatcher(parsingType, text);
+    public List<TextElement> parse(String textToParse, TextType parsingType) {
+        Matcher m = getMatcher(textToParse, parsingType);
         TextElement textElement;
         List<TextElement> elements = new ArrayList<>();
             while (m.find()) {
@@ -36,7 +36,7 @@ public class TextParser {
         return elements;
     }
 
-    private Matcher getMatcher(TextType type, String text) {
+    private Matcher getMatcher(String text, TextType type) {
         String regex = regexBundles.getString(RegexNames.getRegexNameForTextType(type));
         Pattern p = Pattern.compile(regex);
         return p.matcher(text);
